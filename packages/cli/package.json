@@ -4,7 +4,7 @@
   "description": "Command line interface for the crowd device farm",
   "main": "dist/index.js",
   "bin": {
-    "decentest": "dist/index.js"
+    "crowdtest": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

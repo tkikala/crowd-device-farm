@@ -43,12 +43,13 @@ async function listNodes(apiClient: ApiClient, options: any): Promise<void> {
     console.log(chalk.gray(`Found ${filteredNodes.length} node(s):\n`));
     
     filteredNodes.forEach((node: any) => {
-      const statusColor = {
+      const statusColors = {
         online: chalk.green,
         busy: chalk.yellow,
         offline: chalk.red,
         maintenance: chalk.blue
-      }[node.status] || chalk.white;
+      };
+      const statusColor = statusColors[node.status as keyof typeof statusColors] || chalk.white;
 
       const lastHeartbeat = node.last_heartbeat 
         ? new Date(node.last_heartbeat).toLocaleString()

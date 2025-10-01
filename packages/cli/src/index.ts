@@ -9,7 +9,7 @@ import { nodesCommand } from './commands/nodes';
 const program = new Command();
 
 program
-  .name('decentest')
+  .name('crowdtest')
   .description('Crowd Device Farm CLI - Run automated tests on real and virtual devices')
   .version('0.1.0')
   .addCommand(runCommand)

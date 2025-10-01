@@ -63,13 +63,14 @@ async function checkJobStatus(apiClient: ApiClient, jobId: string): Promise<void
   try {
     const job = await apiClient.getJob(jobId);
     
-    const statusColor = {
+    const statusColors = {
       pending: chalk.yellow,
       running: chalk.blue,
       completed: chalk.green,
       failed: chalk.red,
       cancelled: chalk.gray
-    }[job.status] || chalk.white;
+    };
+    const statusColor = statusColors[job.status as keyof typeof statusColors] || chalk.white;
 
     console.log(chalk.gray(`Name: ${job.name}`));
     console.log(chalk.gray(`Status: ${statusColor(job.status)}`));
@@ -114,13 +115,14 @@ async function listJobs(apiClient: ApiClient): Promise<void> {
     console.log(chalk.gray(`Showing ${result.jobs.length} recent jobs:\n`));
     
     result.jobs.forEach((job: any) => {
-      const statusColor = {
+      const statusColors = {
         pending: chalk.yellow,
         running: chalk.blue,
         completed: chalk.green,
         failed: chalk.red,
         cancelled: chalk.gray
-      }[job.status] || chalk.white;
+      };
+      const statusColor = statusColors[job.status as keyof typeof statusColors] || chalk.white;
 
       console.log(chalk.gray(`ID: ${job.id}`));
       console.log(chalk.gray(`Name: ${job.name}`));

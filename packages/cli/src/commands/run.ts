@@ -67,7 +67,7 @@ export const runCommand = new Command('run')
         test_config: {
           apk_path: apkPath,
           test_apk_path: testApkPath,
-          timeout: parseInt(options.timeout || '300', 10),
+          timeout: parseInt(String(options.timeout || '300'), 10),
           ...(options.config ? await loadConfigFile(options.config) : {})
         }
       };
