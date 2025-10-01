@@ -1,0 +1,26 @@
+{
+  "name": "crowd-device-farm",
+  "version": "0.1.0",
+  "description": "A community-powered test farm for running automated tests on real and virtual devices",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "dev": "concurrently \"npm run dev --workspace=@crowd-farm/control-plane\" \"npm run dev --workspace=@crowd-farm/node-agent\"",
+    "db:migrate": "npm run db:migrate --workspace=@crowd-farm/control-plane",
+    "db:seed": "npm run db:seed --workspace=@crowd-farm/control-plane"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "concurrently": "^8.2.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
